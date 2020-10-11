@@ -7,6 +7,7 @@ public class Item {
 	private int quantity;
 	private double price;
 	private Supplier supplier;
+	private Boolean isLow;
 	
 	public Item(int id, String itemName, int quantity, double price, Supplier supplier) {
 		setId(id);
@@ -14,6 +15,7 @@ public class Item {
 		setQuantity(quantity);
 		setPrice(price);
 		setSupplier(supplier);
+		isLow = false; //quantity > 40 ? false: true;
 	}
 	
 	public int getId() {
@@ -53,12 +55,30 @@ public class Item {
 	
 	public void increaseQuantity() {
 		quantity++;
+		
+		if (quantity > 40 ) {
+			isLow = false;
+			
+		}
+		
 	}
 	
-	public void decreaseQuantity() {
+	public void decreaseQuantity(Order order) {
 		quantity--;
+		
+		
+		if (quantity < 40 && isLow == false) {
+			System.out.println("cheeeeee");
+			isLow = true;
+			order.getOrderLines().add(createOrder());
+			System.out.println("Item low, generating order..");
+		}
+		
 	}
 	
-	
+	private OrderLine createOrder() {
+		OrderLine myOrder = new OrderLine(this);
+		return myOrder;
+	}
 
 }

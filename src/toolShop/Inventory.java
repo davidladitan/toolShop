@@ -10,6 +10,7 @@ public class Inventory {
 	
 	public Inventory(ArrayList<Item> items) {
 		setItems(items);
+		order = new Order();
 	}
 	
 	public ArrayList<Item> getItems() {
@@ -38,7 +39,7 @@ public class Inventory {
 	public void decreaseItem(int id) {
 		for (Item item : items) {
 			if (item.getId() == id) {
-				item.decreaseQuantity();
+				item.decreaseQuantity(order);
 				System.out.println("Item is now" + item.getQuantity());
 			}
 		}

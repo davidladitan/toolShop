@@ -51,9 +51,9 @@ public class FrontEnd {
 			case 5:
 				decreaseItemQuantity();
 				break;
-//			case 6:
-//				printTodaysOrder();
-//				break;
+			case 6:
+				printTodaysOrder();
+				break;
 			case 7:
 				System.out.println("You quit the program");
 				return;
@@ -65,6 +65,12 @@ public class FrontEnd {
 	}
 	
 	
+
+	private void printTodaysOrder() {
+		
+		System.out.println(theshop.getMyInventory().getOrder());
+		
+	}
 
 	private void decreaseItemQuantity() {
 		int toolId = getToolId();
@@ -156,10 +162,6 @@ public class FrontEnd {
 	}
 
 	public static void main(String [] args) {
-//		Shop myshop = new Shop("items.txt", "suppliers.txt");
-//		
-//		for(Supplier s: myshop.getSupplierList()) {
-//			System.out.println(s);
 		
 		FrontEnd shopApp = new FrontEnd();
 		shopApp.menu();
