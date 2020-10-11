@@ -24,6 +24,21 @@ public class Shop {
 		return supplierList;
 	}
 	
+	public void addItem(int toolId) {
+		myInventory.increaseItem(toolId);
+	}
+	
+	public void removeItem(int toolId) {
+		myInventory.decreaseItem(toolId);
+	}
+	
+	public Item searchItemById(int id) {
+		return myInventory.searchItem(id);
+	}
+	
+	public Item searchItemByName(String name) {
+		return myInventory.searchItem(name);
+	}
 	
 
 }

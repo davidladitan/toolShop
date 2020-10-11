@@ -48,7 +48,7 @@ public class Item {
 	}
 	
 	public String toString() {
-		return id + " " + itemName + supplier.getId();
+		return id + " " + itemName + " " + supplier.getId();
 	}
 	
 	public void increaseQuantity() {

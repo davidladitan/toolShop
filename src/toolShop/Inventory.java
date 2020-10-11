@@ -7,6 +7,7 @@ public class Inventory {
 	private ArrayList<Item> items;
 	private Order order;
 	
+	
 	public Inventory(ArrayList<Item> items) {
 		setItems(items);
 	}
@@ -27,20 +28,49 @@ public class Inventory {
 		this.order = order;
 	}
 	
-	public void increaseItem(int itemId) {
+	public void increaseItem(int id) {
 		for (Item item : items) {
-			if (item.getId() == itemId)
+			if (item.getId() == id)
 				item.increaseQuantity();
 		}
 	}
 	
-	public void decreaseItem(int itemId) {
+	public void decreaseItem(int id) {
+		for (Item item : items) {
+			if (item.getId() == id) {
+				item.decreaseQuantity();
+				System.out.println("Item is now" + item.getQuantity());
+			}
+		}
+		
+	}
+	
+	public Item searchItem(int id) {
+		
+		for (Item item : items) {
+			if (item.getId() == id)
+				return item;
+		}
+		return null;
+	}
+	
+	public Item searchItem(String name) {
+		
+		for (Item item : items) {
+			if (item.getItemName().equals(name))
+				return item;
+		}
+		return null;
+	}
+	
+	public int checkQuantity(int itemId) {
+		int quantity = 0;
 		for (Item item : items) {
 			if (item.getId() == itemId)
-				item.decreaseQuantity();
+				quantity = item.getQuantity();
 		}
+		return quantity;
 	}
-
 }
 
 	
