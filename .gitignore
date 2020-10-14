@@ -1,0 +1,6 @@
+.DS_Store
+.classpath
+.project
+bin/
+src/.DS_Store
+src/toolShop/.gitignore
