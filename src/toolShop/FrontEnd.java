@@ -1,18 +1,29 @@
 package toolShop;
 
-import java.awt.Menu;
+
 import java.util.Scanner;
 
+/**
+ * Represents the front end to interact with the tool shop 
+ * @author David Laditan
+ *
+ */
 public class FrontEnd {
 	
 	Shop theshop;
 	Scanner scanner;
 	
+	/**
+	 * constructor of a FrontEnd object
+	 */
 	public FrontEnd() {
 		theshop = new Shop("items.txt", "suppliers.txt");
 		scanner = new Scanner(System.in);
 	}
 	
+	/**
+	 * prints the menu list available to a user 
+	 */
 	public void printMenuList() {
 		System.out.println("Please choose one of the following options:\n\n"
 				+ "1. List all tools\n"
@@ -24,6 +35,9 @@ public class FrontEnd {
 				+ "7. Quit.\n");
 	}
 	
+	/**
+	 * runs the front end application
+	 */
 	public void menu() {
 		
 		
@@ -32,7 +46,7 @@ public class FrontEnd {
 			printMenuList();
 			
 			
-			int choice = scanner.nextInt();
+			int choice = Integer.parseInt(scanner.nextLine());
 			
 			switch (choice) {
 			
@@ -66,23 +80,35 @@ public class FrontEnd {
 	
 	
 
+	/**
+	 * displays all the items ordered for the day
+	 */
 	private void printTodaysOrder() {
 		
 		System.out.println(theshop.getMyInventory().getOrder());
 		
 	}
 
+	/**
+	 * decreases an item quantity by 1
+	 */
 	private void decreaseItemQuantity() {
 		int toolId = getToolId();
 		theshop.removeItem(toolId);
 		
 	}
 	
+	/**
+	 * increases an item quantity by 1
+	 */
 	private void increaseItemQuantity() {
 		int toolId = getToolId();
 		theshop.addItem(toolId);
 	}
 
+	/**
+	 * lists all the tools available in the inventory
+	 */
 	private void listAllTools() {
 		
 		System.out.println("Tools List:\n");
@@ -92,15 +118,18 @@ public class FrontEnd {
 		
 	}
 
+	/**
+	 * checks the quantity of an item available in stock
+	 */
 	private void checkItemQuantity() {
 		
 		System.out.println("To check by tool id press 0, to check by tool name enter 1:");
-		int choice = scanner.nextInt();
+		int choice = Integer.parseInt(scanner.nextLine());
 		Item item = null;
 		
 		while (choice != 0 && choice != 1) {
 			System.out.println("Please enter a correct search option");
-			choice = scanner.nextInt();
+			choice = Integer.parseInt(scanner.nextLine());
 		}
 		
 		if (choice == 0) {
@@ -115,12 +144,16 @@ public class FrontEnd {
 		
 	}
 
+	/**
+	 * gets a tool name from the user
+	 * @return tool name
+	 */
 	private String getToolName() {
 		String name = "";
 		
 		while(true) {
 			System.out.println("Please enter tool name: ");
-			name = scanner.next();
+			name = scanner.nextLine();
 			Item item = theshop.searchItemByName(name);
 			if (item == null)
 				System.out.println("Invalid tool name!");
@@ -131,12 +164,16 @@ public class FrontEnd {
 		return name;
 	}
 	
+	/**
+	 * gets a tool id from the user
+	 * @return tool id 
+	 */
 	private int getToolId() {
 		int id = 0;
 		
 		while(true) {
 			System.out.println("Please enter tool id: ");
-			id = scanner.nextInt();
+			id = Integer.parseInt(scanner.nextLine());
 			Item item = theshop.searchItemById(id);
 			if (item == null)
 				System.out.println("Invalid tool Id!");
@@ -147,6 +184,9 @@ public class FrontEnd {
 		return id;
 	}
 
+	/**
+	 * search for a tool by name
+	 */
 	private void searchByToolName() {
 		
 		String name = getToolName();
@@ -154,6 +194,9 @@ public class FrontEnd {
 		System.out.println(item);
 	}
 	
+	/**
+	 * search for a tool by id
+	 */
 	private void searchByToolId() {
 		int toolId = getToolId();
 		Item item = theshop.searchItemById(toolId);

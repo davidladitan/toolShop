@@ -40,7 +40,7 @@ public class FileManager {
 				for(Supplier s : suppliers) {
 					if (s.getId() == supplierId) {
 						
-						item = new Item(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), Double.parseDouble(temp[3]), s);
+						item = new Item(Integer.parseInt(temp[0]), temp[1].strip(), Integer.parseInt(temp[2]), Double.parseDouble(temp[3]), s);
 						items.add(item);
 						s.getItemsList().add(item);
 					}
