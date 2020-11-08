@@ -6,15 +6,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-
+/**
+ * This class reads items and suppliers from text files.
+ * @author David Laditan
+ *
+ */
 public class FileManager {
-	
-	
 	
 	public FileManager() {
 		
 	}
 	
+	/**
+	 * reads shop items from a text file. checks supplierId of items and to items list of supplier. 
+	 * 
+	 * @param itemFile 
+	 * @param supplierFile
+	 * @return returns a list of Item objects containing all items read from the text file. 
+	 */
 	public ArrayList<Item> readItems(String itemFile, String supplierFile){
 		
 		ArrayList<Item> items = new ArrayList<Item>();
@@ -60,6 +69,12 @@ public class FileManager {
 		
 	}
 	
+	/**
+	 * reads suppliers from a text file and returns a list of Supplier objects
+	 * 
+	 * @param filename name of text file containing supplier information
+	 * @return returns a list of Supplier objects
+	 */
 	public ArrayList<Supplier> readSuppliers(String filename){
 		
 		ArrayList<Supplier>supplierList = new ArrayList<Supplier>();
