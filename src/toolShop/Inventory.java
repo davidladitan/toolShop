@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Holds the inventory of all tools available in the store
- * @author odladitan
+ * @author David Laditan
  *
  */
 public class Inventory {
