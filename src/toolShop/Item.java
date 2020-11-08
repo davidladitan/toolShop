@@ -115,7 +115,7 @@ public class Item {
 	 *  String representation of item
 	 */
 	public String toString() {
-		return "Tool id: " + id + ", Tool name: " + itemName + ", Supplier id: " + supplier.getId();
+		return "Tool id: " + id + ", Tool name: " + itemName + ", Supplier id: " + supplier.getId() + " ,amount left: " + getQuantity();
 	}
 	
 	/**
